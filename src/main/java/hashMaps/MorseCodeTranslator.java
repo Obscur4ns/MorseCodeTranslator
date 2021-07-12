@@ -2,6 +2,7 @@ package hashMaps;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class MorseCodeTranslator {
 
@@ -47,6 +48,22 @@ public class MorseCodeTranslator {
 		}
 		return translated;
 
+	}
+
+	public String convert(String toConvert) {
+		mapPopulate();
+		String convert = "";
+		for (Character conversion : toConvert.toCharArray()) {
+			for (Entry<String, Character> entry : dictionary.entrySet()) {
+				if (entry.getValue() != conversion.charValue()) {
+					continue;
+				} else {
+					convert += entry.getKey();
+					convert += " ";
+				}
+			}
+		}
+		return convert.trim();
 	}
 
 }
